@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/LandingPage.css"
 
 export default function LandingPage(){
     
 return(
 
-    <div>
-        <h1>Welcome To My Page</h1>
+    <div className="paginaPrincipal">
+        <h1 className="titulo">Welcome to The Dogs!</h1>
         <Link to='/home'>
-            <button>Go Home!</button>
-        </Link>
+            <button className="botonHome"><img className="imagenprincipal" src="https://cdn-icons-png.flaticon.com/128/1076/1076928.png" alt=""/></button>
+      </Link>
 
     </div>
 )

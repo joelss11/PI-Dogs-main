@@ -1,0 +1,34 @@
+.contenedorSearch{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.inputBuscar{
+   
+    border: 2px solid rgb(203, 152, 0);
+    border-radius: 10px;
+    width: 170px;
+    height: 35px;
+}
+.botonBuscar{
+    background-color: #f6d323; /* Green */
+    border: none;
+    border-radius: 50px;
+    height: 45px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1px;   
+}
+.imagenBuscar{
+    height: 40px;
+    width: 40px;
+}
+.botonBuscar:hover{
+    background-color: rgb(31, 241, 12);
+    transition: background-color .5s;
+}

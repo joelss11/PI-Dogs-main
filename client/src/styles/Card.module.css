@@ -1,0 +1,27 @@
+.imagenCard{
+    border-radius: 10px;
+}
+
+@media (max-width:560px) {
+    .imagenCard{
+        width: 90%;
+        height: auto;
+    }
+}
+.contenedorCartica{
+    margin-left: -80px;
+    margin-right: 3px;
+    width: 300px;
+    height: 410px;
+    border-top: 1px solid rgb(243, 243, 6);
+    border-bottom: 1px solid rgb(243, 243, 6);
+    border-right: 1px solid rgb(243, 243, 6);
+    border-left: 1px solid rgb(243, 243, 6);
+    border-radius: 20px;
+    background-color:rgb(237, 63, 0);
+    cursor: pointer;
+}
+.contenedorCartica:hover.contenedorCartica {
+    background-color: rgb(159, 208, 14);
+    -webkit-transform:scale(1.3);transform:scale(1.1);
+}

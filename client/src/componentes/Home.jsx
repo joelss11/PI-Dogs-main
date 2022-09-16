@@ -5,6 +5,8 @@ import { getDogs,filterDogsByPeso,filterCreated, orderByName } from "../actions"
 import{Link} from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
+import "../styles/Home.css"
 
 export default function Home (){
     const dispatch = useDispatch();
@@ -31,11 +33,6 @@ export default function Home (){
       dispatch(getDogs());
     }
  
-   function handleFilterStatus(e){
-     dispatch(filterDogsByPeso(e.target.value))
-   }
-
-
    function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
    }
@@ -47,45 +44,71 @@ export default function Home (){
     setOrden(`Ordenado ${e.target.value} `)
    }
 
-    return(
-        <div>
-            <Link to="/dog">Crear Dog</Link>
-            <h1>App Dogs</h1>
-            <button onClick={e=>{handleClick(e)}}> Volver A Cargar todos los Dogs!</button>
+   const handleOrderByPeso = (e) => {
+    e.preventDefault();
+    dispatch(filterDogsByPeso(e.target.value))
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value} `)
+  }
 
+
+    return(
+        <div className="container">
+            <h1 className="tituloPrincipal">𝓓𝓸𝓰𝓼𝓟𝓻𝓸</h1>
+            <img className="imagenLogo"src="https://media.istockphoto.com/vectors/cute-dog-vector-logo-illustration-vector-id1006358538?k=20&m=1006358538&s=170667a&w=0&h=ycbWpHpr6nx3x7euQP-eP9jL2RYD17TpLOM6UpdZIjI=" alt="" />
             <div>
-                <select onChange={e=>{handleSort(e)}}>
+             <Link to="/dogs">
+            <button className="botonimagen"><img className="imagenAdd"src="https://cdn-icons-png.flaticon.com/512/6569/6569784.png" alt="" /></button>
+                </Link>
+                </div>
+
+                <div className="BotonRefresh">
+                <button className="botonRefres" onClick={e=>{handleClick(e)}}><img className="imagenRefres"src="https://cdn-icons-png.flaticon.com/512/724/724863.png" alt="" /></button>
+                </div>
+            
+                <SearchBar/>
+            <div>
+                <div className="filtros">
+                <select className="selector" onChange={e=>{handleSort(e)}}>
                     <option value="asc">Ascendente</option>
                     <option value="des">Descendente</option>
                 </select>
 
-                <select onChange={e=>{handleFilterStatus(e)}}>
-                    <option value="alfab">Orden Alfabetico</option>
-                    <option value="peso">Peso</option>
-                    <option value="nombre">Razas</option>
-                    <option value="Temperamento">Temperamento</option>
+                <select className="selector" onChange={e=>{handleOrderByPeso(e)}}>
+                    
+                    <option value="pesomin">Peso Min</option>
+                    <option value="pesomax">Peso MaX</option>
+                 
                 </select>
 
-                <select onChange={e=>handleFilterCreated(e)}>
+                <select className="selector" onChange={e=>handleFilterCreated(e)}>
                     <option value="All">All</option>
                     <option value="created">Creados DB</option>
                     <option value="api">Api</option>
                 </select>
+                </div>
+
+                <div className="paginator">
                 <Paginado 
                 dogsPerPage={dogsPerPage}
                 allDogs={allDogs.length}
                 paginado={paginado}
                 />
+                </div>
+              
+                <div className="perritos">
                     {
                  currentDogs.map((c)=>{
                     return(
-            
-                    <Card nombre={c.nombre} Temperamentos={c.Temperamentos} peso={c.peso['imperial']||c.peso} imagen={c.imagen['url']||c.imagen}  key={c.id} />
-                       
+                        <li className="cartarende">
+            <div className="">
+                    <Card nombre={c.nombre} Temperamentos={c.Temperamentos[0].nombre ? c.Temperamentos.map(c => c.nombre) : c.Temperamentos} peso={c.peso['imperial']||c.peso} imagen={c.imagen['url']||c.imagen}  key={c.id} />
+                    </div>  
+                    </li>    
                     );
-                })
-               
+                })  
             }      
+            </div>
             </div>
         </div>
     )

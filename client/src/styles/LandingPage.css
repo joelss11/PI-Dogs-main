@@ -1,0 +1,36 @@
+body{
+    background:url("https://fondosmil.com/fondo/20100.jpg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+  }
+  .titulo{
+    font-size: 60px;
+    margin-left: 30px;
+      
+}
+
+  
+  .botonHome{
+    margin-left: 250px;
+    margin-top: 150px;
+    background-color:rgb(109, 26, 43) ; 
+    border: none;
+    border-radius: 35px;  
+    text-decoration: none;
+    cursor: pointer;
+    
+  }
+  .botonHome:hover {
+    background-color: rgb(14, 195, 14); /* Green */
+    color: white;
+  }
+
+  .imagenprincipal{
+    display: flex;
+    justify-content: center;
+    width:95px;
+    height:100px;
+    cursor: pointer;
+  }
