@@ -11,19 +11,19 @@ module.exports = (sequelize) => {
       primaryKey:true
     },
     nombre:{
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull:false
     },
     altura:{
-        type:DataTypes.FLOAT,
+        type:DataTypes.STRING,
         allowNull:false
     },
     peso:{
-        type:DataTypes.FLOAT,
+        type:DataTypes.STRING,
         allowNull:false
     },
     añosDeVida:{
-     type:DataTypes.INTEGER
+     type:DataTypes.STRING
     },
     imagen:{
       type:DataTypes.STRING,

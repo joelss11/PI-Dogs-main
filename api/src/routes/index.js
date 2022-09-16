@@ -19,7 +19,8 @@ const getApiInfo = async ()=>{
             altura:resp.height,
             peso:resp.weight,
             añosDeVida:resp.life_span,
-            imagen:resp.image
+            imagen:resp.image,
+            Temperamentos:resp.temperament
         }
     })
     return apiInfo;
@@ -103,7 +104,7 @@ router.get('/dogs/:idRaza', async (req, res) => {
 
 router.post("/dogs", async (req, res) => {
 
-   let {nombre, altura, peso, añosDeVida, imagen,createdInDb, temperamento} = req.body;
+   let {nombre, altura, peso, añosDeVida, imagen,createdInDb, Temperamentos} = req.body;
     
      let DogCreated = await Raza.create({
         nombre,
@@ -111,15 +112,18 @@ router.post("/dogs", async (req, res) => {
         peso,
         añosDeVida,
         imagen,
-        createdInDb
+        createdInDb,
+    
      })
 
      let temperamentoDb = await Temperamento.findAll({
-        where:{nombre:temperamento}
+        where:{nombre:Temperamentos}
      })
 
      DogCreated.addTemperamento(temperamentoDb)
      res.send("Personaje creado correctamente")
+
+     
    
   });
 
