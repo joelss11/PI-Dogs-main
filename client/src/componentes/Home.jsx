@@ -1,7 +1,7 @@
 import React from "react";
 import {useState, useEffect} from  'react';
 import{useDispatch, useSelector} from 'react-redux';
-import { getDogs,filterDogsByPeso,filterCreated, orderByName } from "../actions"; 
+import { getDogs,filterDogsByPeso,filterCreated, orderByName, getTemperaments,FilterByTemperament } from "../actions"; 
 import{Link} from 'react-router-dom';
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -11,6 +11,8 @@ import "../styles/Home.css"
 export default function Home (){
     const dispatch = useDispatch();
     const allDogs= useSelector((state)=>state.dogs)
+    const allTemperamentos=useSelector((state)=>state.temperaments)
+
     const[orden, setOrden]=useState('')
     const [currentPage, setCurrentPage] = useState(1)//estado local -- pagina donde estoy y cual va hacer la pagna actual 
     const [dogsPerPage,setdogsPerPage] = useState(8)//cantida de cararter por paginana
@@ -26,7 +28,12 @@ export default function Home (){
 
     useEffect(()=>{
         dispatch(getDogs())
-    }, [])
+    }, [dispatch])
+    useEffect(()=>{
+        dispatch(getTemperaments())
+    }, [dispatch])
+
+
 
     function handleClick(e){
       e.preventDefault();
@@ -37,6 +44,12 @@ export default function Home (){
     dispatch(filterCreated(e.target.value))
    }
 
+   function handleFilterTemperamento(e){
+    e.preventDefault();    
+    dispatch(FilterByTemperament(e.target.value));
+    
+   }
+
    function handleSort(e){
     e.preventDefault();
     dispatch(orderByName(e.target.value))
@@ -44,12 +57,14 @@ export default function Home (){
     setOrden(`Ordenado ${e.target.value} `)
    }
 
-   const handleOrderByPeso = (e) => {
+   function handleOrderByPeso(e) {
     e.preventDefault();
     dispatch(filterDogsByPeso(e.target.value))
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value} `)
   }
+
+ 
 
 
     return(
@@ -70,24 +85,32 @@ export default function Home (){
             <div>
                 <div className="filtros">
                 <select className="selector" onChange={e=>{handleSort(e)}}>
-                    <option value="asc">Ascendente</option>
-                    <option value="des">Descendente</option>
+                <option hidden>Orden Alfabetico</option>
+                    <option value="asc">A-Z ↓</option>
+                    <option value="des">Z-A ↑</option>
                 </select>
 
                 <select className="selector" onChange={e=>{handleOrderByPeso(e)}}>
-                    
+                <option hidden>Peso</option>
                     <option value="pesomin">Peso Min</option>
                     <option value="pesomax">Peso MaX</option>
-                 
                 </select>
 
                 <select className="selector" onChange={e=>handleFilterCreated(e)}>
+                <option hidden>Datos Creados en...</option>
                     <option value="All">All</option>
-                    <option value="created">Creados DB</option>
+                    <option value="created">Base de datos</option>
                     <option value="api">Api</option>
                 </select>
-                </div>
 
+                <select className="selector" onChange={handleFilterTemperamento}>
+                 <option hidden>Temperaments</option>                 
+                 <option value="Todos">All</option>
+                {allTemperamentos?.map(temp => (
+                        <option value={temp.nombre}  key={temp.id}>{temp}</option>
+                    ))}
+                </select>
+                </div>
                 <div className="paginator">
                 <Paginado 
                 dogsPerPage={dogsPerPage}
@@ -100,9 +123,11 @@ export default function Home (){
                     {
                  currentDogs.map((c)=>{
                     return(
-                        <li className="cartarende">
-            <div className="">
-                    <Card nombre={c.nombre} Temperamentos={c.Temperamentos[0].nombre ? c.Temperamentos.map(c => c.nombre) : c.Temperamentos} peso={c.peso['imperial']||c.peso} imagen={c.imagen['url']||c.imagen}  key={c.id} />
+                    <li className="cartarende" >
+                   <div className="">
+                   <Link to={"/details/" + c.id}>
+                    <Card nombre={c.nombre} Temperamentos={c.Temperamentos} peso={`${c.pesoMin} - ${c.pesoMax}`} imagen={c.imagen['url']||c.imagen}  key={c.id} />
+                    </Link>
                     </div>  
                     </li>    
                     );
