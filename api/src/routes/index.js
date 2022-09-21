@@ -22,7 +22,7 @@ const getApiInfo = async ()=>{
           alturaMax:resp.height.metric.slice(4).trim(),
             añosDeVida:resp.life_span,
             imagen:resp.image.url,
-            Temperamentos:resp.temperament
+            temperament:resp.temperament
         }
     })
     return apiInfo;
