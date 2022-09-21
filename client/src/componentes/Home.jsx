@@ -126,13 +126,15 @@ export default function Home (){
                     <li className="cartarende" >
                    <div className="">
                    <Link to={"/details/" + c.id}>
-                    <Card nombre={c.nombre} Temperamentos={c.Temperamentos} peso={`${c.pesoMin} - ${c.pesoMax}`} imagen={c.imagen['url']||c.imagen}  key={c.id} />
+                    <Card  key={c.id} nombre={c.nombre} temperament={c.temperament||c.Temperamentos?.map(e=>e.nombre +",")} peso={`${c.pesoMin} - ${c.pesoMax}`} imagen={c.imagen['url']||c.imagen} />
                     </Link>
+                    
                     </div>  
                     </li>    
                     );
                 })  
-            }      
+            }
+
             </div>
             </div>
         </div>

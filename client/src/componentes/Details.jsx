@@ -54,7 +54,7 @@ export default function Details(props){
                   <div className="wapper-body">
                 <p className="subtaitel-body">Temperamentos: </p>
                 <div className="container-body-temperament">
-                {myDog.Temperamentos}
+                {myDog.temperament||myDog.Temperamentos?.map(e=>e.nombre)}
                 </div>
               </div>
                 </div>
