@@ -16,10 +16,12 @@ const getApiInfo = async ()=>{
         return{
             id:resp.id,
             nombre:resp.name,
-            altura:resp.height,
-            peso:resp.weight,
+          pesoMin:resp.weight.metric.slice(0, 2).trim(),
+          pesoMax:resp.weight.metric.slice(4).trim(),
+          alturaMin:resp.height.metric.slice(0, 2).trim(),
+          alturaMax:resp.height.metric.slice(4).trim(),
             añosDeVida:resp.life_span,
-            imagen:resp.image,
+            imagen:resp.image.url,
             Temperamentos:resp.temperament
         }
     })
@@ -104,12 +106,14 @@ router.get('/dogs/:idRaza', async (req, res) => {
 
 router.post("/dogs", async (req, res) => {
 
-   let {nombre, altura, peso, añosDeVida, imagen,createdInDb, Temperamentos} = req.body;
+   let {nombre, alturaMin,alturaMax, pesoMin,pesoMax, añosDeVida, imagen,createdInDb, Temperamentos} = req.body;
     
      let DogCreated = await Raza.create({
         nombre,
-        altura,
-        peso,
+        alturaMin,
+        alturaMax,
+        pesoMin,
+        pesoMax,
         añosDeVida,
         imagen,
         createdInDb,
@@ -128,7 +132,7 @@ router.post("/dogs", async (req, res) => {
   });
 
 
-router.get("/temperament", async (req, res) => {
+router.get("/temperaments", async (req, res) => {
     await getTemperament();
   
     const allTemperaments = await Temperamento.findAll();
