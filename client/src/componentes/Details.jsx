@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../actions";
+import { getDetail,getClean,setLoading,setError } from "../actions";
 import { lazy, Suspense, useEffect } from "react";
 import Card from "./Card";
 
@@ -14,21 +14,30 @@ export default function Details(props){
 
     useEffect(()=>{
         dispatch(getDetail(props.match.params.id))
+        dispatch(setLoading(false))
+        return()=>{
+          dispatch(getClean())
+        }
     },[dispatch])
 
+    const  { loading, error} = useSelector((state)=>state)
     const  myDog = useSelector((state)=>state.details)
     console.log(myDog);
     
     
     return (
-        <>
-        <Suspense fallback={<h1>Cargando...</h1>}>
-          <div className="container-detail">
+        
+      
+         <div className="container-detail">
+        
+      
+           
             <div className="card-detail">
               <div className="divImgDetail">
                 <img src={myDog.imagen} alt="" className="pictureDetalle" />
               </div>
               <div className="content-detail">
+                <p>Nombre:</p>
                 <h1 className="name-detail">{myDog.nombre} </h1>
                 <div className="body-container">
                   <div className="wapper-body">
@@ -50,7 +59,7 @@ export default function Details(props){
                   <div className="wapper-body">
                     <p className="subtaitel-body">Esperanza de vida: </p>
                     <p className="container-body">
-                      {`de ${myDog.añosDeVida}years`}
+                     <h4>{myDog.createdInDb ? `${myDog.añosDeVida}  years` : myDog.añosDeVida}</h4>
                     </p>
                   </div>
                   <div className="wapper-body">
@@ -60,13 +69,15 @@ export default function Details(props){
                 </div>
               </div>
                 </div>
+              
                 <div>
                 <Link to="/home"><button>Back</button></Link>
                 </div>
               </div>
             </div>
+           
           </div>
-          </Suspense>
-        </>
-      );
+                
+
+    )     
 }

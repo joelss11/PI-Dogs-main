@@ -18,8 +18,10 @@
     border-right: 1px solid rgb(243, 243, 6);
     border-left: 1px solid rgb(243, 243, 6);
     border-radius: 20px;
-   background-image: url("https://media.istockphoto.com/vectors/cat-or-dog-paw-seamless-patterns-backgrounds-for-pet-shop-websites-vector-id1027096482?k=20&m=1027096482&s=170667a&w=0&h=S8RNb4hRySXV2D-IgSU9QSDIXXeckee7x8_r476tFIY=");
-    cursor: pointer;
+   background: url("https://99px.ru/sstorage/86/2021/03/image_860703211518405113641.gif");
+   
+
+   cursor: pointer;
 }
 .contenedorCartica:hover.contenedorCartica {
     background-color: rgb(159, 208, 14);
@@ -28,4 +30,26 @@
 
 .textoh3{
     text-decoration: none;
+    color: rgb(255, 251, 0);
+    width: 150px;
+    margin-left: 80px;
+    border-radius: 10px;
+
+}
+
+.temperamento{
+    text-decoration: none;
+    color: rgb(255, 251, 0);
+    
+
+    border-radius: 10px;
+
+}
+
+.peso{
+    text-decoration: none;
+    color: rgb(255, 251, 0);
+    
+
+    border-radius: 10px; 
 }

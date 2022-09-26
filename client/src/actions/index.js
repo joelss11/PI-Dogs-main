@@ -84,3 +84,16 @@ export function getDetail(id){
         }
     }
 }
+
+export function getClean () {
+    return{
+        type: "GET_CLEAN",
+        payload: []
+    }
+}
+export function setLoading ()  {
+    return { type: "SET_LOADING" };
+};
+export function setError ()  {
+    return { type: "ERROR" };
+};

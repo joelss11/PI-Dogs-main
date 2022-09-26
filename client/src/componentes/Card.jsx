@@ -9,11 +9,11 @@ export default function Card({nombre, peso, imagen,temperament}){
             {nombre}
             </h3>
               <img className={styles.imagenCard} src={imagen} alt="no encontra" width="230px" height="210px"/>   
-            <h4>  
+            <h4 className={styles.temperamento}>  
           {temperament}  
           </h4>
           
-        <h5>
+        <h5 className={styles.peso}>
             
             {peso} kg
         </h5> 

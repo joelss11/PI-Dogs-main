@@ -4,7 +4,9 @@ const initialState = {
     allDogs:[],
     temperaments:[],
     details:[],
-    dogsByTemperament:[]
+    dogsByTemperament:[],
+    loading:true,
+    error:false
 }
 
 
@@ -110,7 +112,23 @@ function rootReducer(state = initialState, action){
                       ...state,
                       details:action.payload
                     }
-
+                    case 'GET_CLEAN':
+                      return{
+                        ...state,
+                        details:action.payload
+                      }
+                      case "SET_LOADING":
+                        return {
+                            ...state,
+                            loading: true,
+                        };
+            
+                    case "ERROR":
+                        return {
+                            ...state,
+                            loading: false,
+                            error: !state.error,
+                        };
             default:
                 return{...state};
     }

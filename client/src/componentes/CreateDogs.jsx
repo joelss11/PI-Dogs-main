@@ -7,12 +7,13 @@ import styles from'../styles/CreateDogs.module.css'
 
 export function validate (input) {
     let errors = {};
+    var regex = new RegExp("^[0-9-]+$");
     if (!input.nombre) errors.nombre = "Nombre is required";
     else if (input.nombre.search(/^[a-zA-Z\s]*$/)) {
       errors.nombre = "El nombre no puede tener numeros ni simbolos";
     }
  //Altura hay un tema con las \, pero si no la pongo deja poner puntos
-    if (!input.alturaMin) {
+    else if (!input.alturaMin) {
        errors.alturaMin = "Campo requerido"
     }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.alturaMin)) {
        errors.alturaMin = "Solo numeros enteros"
@@ -22,7 +23,7 @@ export function validate (input) {
        errors.alturaMin = "No es jirafa ;)"
     }
  
-    if (!input.alturaMax) {
+    else if (!input.alturaMax) {
        errors.alturaMax = "Campo requerido"
     }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.alturaMax)) {
        errors.alturaMax = "Ingrese solo números enteros"   ///lee el primer numero no el numero entero
@@ -33,7 +34,7 @@ export function validate (input) {
     }
  
  //Peso
-    if (!input.pesoMin) {
+    else if (!input.pesoMin) {
        errors.pesoMin= "Campo requerido"
     }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.pesoMin)) {
        errors.pesoMin = "Ingrese solo números enteros"
@@ -43,7 +44,7 @@ export function validate (input) {
     errors.pesoMin = "Ni que fuese elefante ;)"
     }
  
-    if (!input.pesoMax) {
+    else if (!input.pesoMax) {
        errors.pesoMax = "Campo requerido"
     }else if (!/^[0-9]\d*(\.\d+)?$/.test(input.pesoMax)) {
        errors.pesoMax = "Ingrese solo números enteros"
@@ -52,12 +53,33 @@ export function validate (input) {
     }else if (input.pesoMax > 130) {
     errors.pesoMax= "Ni que fuese elefante ;)"
     } 
+    else if (!input.añosDeVida) {
+      errors.añosDeVida = "Campo requerido'";
+    } else if (!input.añosDeVida.includes("-")) {
+      errors.añosDeVida = "necesita estar separado como se muestra en el ejemplo'";
+   }
+     else if (!input.añosDeVida.charAt(input.añosDeVida.indexOf("-") + 1)) {
+      errors.añosDeVida = "It's required a life span of format 'Vmin-Vmax'";
+    } else if (
+      Number(input.añosDeVida.split("-")[0]) >
+      Number(input.añosDeVida.split("-")[1])
+    ) {
+      errors.añosDeVida =
+        "El año minimo debe ser menor al año maximo";
+    } else if (regex.test(input.añosDeVida) == false) {
+      errors.añosDeVida = "Solo numeros positivos!";
+    } else if (input.añosDeVida.charAt(0) == "-") {
+      errors.añosDeVida = "Que!!";
+    }
+    else if (!input.imagen)
+    errors.imagen = "Debe completar este campo";
+  else if (!/(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/.test(input.imagen)) {
+    errors.imagen = "Please insert a valid image URL";
+  }
  
  //Vida acá solo un numero, después veo si hago otra validación...
  
-   
-    if (!input.Temperamentos.length) errors.temperament = "Debe seleccionar al menos un temperamento"
-
+  
    return errors
 }
     
@@ -87,13 +109,15 @@ export function validate (input) {
 
     function handleChange(e){
         setInput({
+                       
             ...input,
             [e.target.name]:e.target.value
         })
         setErrors(validate({
             ...input, [e.target.name]:e.target.value
         }));
-        console.log(input)    
+        console.log(input)
+       
     }
 
 
@@ -147,7 +171,7 @@ export function validate (input) {
 
     return(
 
-        <div>
+        <div className={styles.PaginaCrear}>
             <div className={styles.contHome}>
             <Link to="/home"><button className={styles.botonHome}  ><img className={styles.imagenHome} src="https://cdn-icons-png.flaticon.com/512/553/553416.png" alt="" /></button></Link>
             </div>
@@ -201,7 +225,7 @@ export function validate (input) {
 
              <div>
                 <label className={styles.labelAñosDeVida}>𝓐𝓷̃𝓸𝓼 𝓓𝓮 𝓥𝓲𝓭𝓪 </label>
-                <input className={styles.inputAñosDeVida} type="text" value={input.añosDeVida} name="añosDeVida" onChange={handleChange}placeholder="Años de vida"/>
+                <input className={styles.inputAñosDeVida} type="text" value={input.añosDeVida} name="añosDeVida" onChange={(e)=>handleChange(e)}placeholder="Ejemplo: 13-24 years"/>
                 {errors.añosDeVida &&(
                         <p className="error">{errors.añosDeVida}</p>
                     )}
@@ -209,7 +233,7 @@ export function validate (input) {
 
              <div>
                 <label className={styles.labelImagen}>𝓘𝓶𝓪𝓰𝓮𝓷</label>
-                <input className={styles.inputImagen} type="text" value={input.imagen} name="imagen" onChange={handleChange} placeholder="http://www.imagenDogs.png"/>
+                <input className={styles.inputImagen} onChange={(e)=>handleChange(e)} type="text" value={input.imagen} name="imagen"  placeholder="http://www.imagenDogs.png"/>
                 {errors.imagen &&(
                         <p className="error">{errors.imagen}</p>
                     )}
@@ -218,25 +242,22 @@ export function validate (input) {
              <select className={styles.selectTemp} onChange={(e)=>handleSelect(e)}>
                 <option hidden>Temperamentos</option>
                 {temperamentos.map((temp)=>(
-                    <option value={temp}>{temp}</option>
+                    <option key={temp} value={temp}>{temp}</option>
                     ))}
              </select>
              <div className={styles.delete}>
 
           {input.Temperamentos.map((e) => (
                 <div key={e} className={styles.delete}>
-                  <div key={e}>{e}</div>
-
                   <button 
                     className={styles.deleteButton}
                     onClick={() => handleDelete(e)}
                   >
                     <img className={styles.imagenEliminar} src="https://cdn-icons-png.flaticon.com/512/6932/6932392.png" alt="" />
                   </button>
+                  <div key={e}>{e}</div>
                 </div>
               ))}
-
-
                 </div>
 
               <button className={styles.botonCrearDog} type="submit"><img className={styles.imagenGuardar} src="https://cdn-icons-png.flaticon.com/512/4013/4013882.png" alt="" /></button>

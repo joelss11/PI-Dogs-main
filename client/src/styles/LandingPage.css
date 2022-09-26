@@ -14,10 +14,8 @@
     padding: 0;
     height: 100%;
     width: 100vw;
-    background-color: rgb(248, 198, 15);
+    background-color: rgb(241, 175, 6);
     background-repeat: no-repeat;
-    
-  
     }
   .titulo{
     font-size: 60px;
@@ -29,7 +27,7 @@
   .botonHome{
     margin-left: 250px;
     margin-top: 150px;
-    background-color:rgb(109, 26, 43) ; 
+    background-color:rgb(218, 8, 8) ; 
     border: none;
     border-radius: 35px;  
     text-decoration: none;

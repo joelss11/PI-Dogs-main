@@ -1,4 +1,12 @@
-
+.PaginaCrear{
+    background: url("https://p4.wallpaperbetter.com/wallpaper/162/161/312/autumn-each-dog-hd-wallpaper-preview.jpg");
+      background-size: cover;
+  background-position: center;
+  
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
 select{
     margin-left: 30px;
     width: 100px;
@@ -256,11 +264,24 @@ background-color: rgb(255, 234, 0);
 .contHome{
     padding: 5px 20px 20px ;
     width: 1px;
-    background-color: rgb(241, 222, 11);
+    background-color: rgb(25, 25, 22);
 }
 .errors{
     font-size: 15px;
     color: red;
+}
+
+.delete{
+    float: left;
+    margin-right: 30px;
+    margin-top: 4px;
+}
+.deleteButton{
+    border-radius: 200px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background-color: rgb(225, 255, 0);
 }
 
 
@@ -274,13 +295,14 @@ background-color: rgb(255, 234, 0);
     margin-left: -340px;
     box-sizing: border-box;
     border-radius: 15px;
-    background-image: url("https://w0.peakpx.com/wallpaper/325/669/HD-wallpaper-dogs-dog-fall-pet.jpg");
+    background: rgba(0, 0, 0, 0.4);
+
     background-size: cover;
-  background-position: center;
-  
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+   
+    display: flex;
+    flex-direction: column;
    
     
     
