@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../actions";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Card from "./Card";
+
 
 
 export default function Details(props){
@@ -18,9 +19,10 @@ export default function Details(props){
     const  myDog = useSelector((state)=>state.details)
     console.log(myDog);
     
-
+    
     return (
         <>
+        <Suspense fallback={<h1>Cargando...</h1>}>
           <div className="container-detail">
             <div className="card-detail">
               <div className="divImgDetail">
@@ -48,28 +50,23 @@ export default function Details(props){
                   <div className="wapper-body">
                     <p className="subtaitel-body">Esperanza de vida: </p>
                     <p className="container-body">
-                      {`de ${myDog.añosDeVida}`}
+                      {`de ${myDog.añosDeVida}years`}
                     </p>
                   </div>
                   <div className="wapper-body">
                 <p className="subtaitel-body">Temperamentos: </p>
                 <div className="container-body-temperament">
-                {myDog.temperament||myDog.Temperamentos?.map(e=>e.nombre)}
+                {myDog.temperament||myDog.Temperamentos?.map(e=>e.nombre +" ")}
                 </div>
               </div>
                 </div>
                 <div>
-                  <button
-                    className="button-detail"
-                    onClick={() => {
-                    }}
-                  >
-                    Volver
-                  </button>
+                <Link to="/home"><button>Back</button></Link>
                 </div>
               </div>
             </div>
           </div>
+          </Suspense>
         </>
       );
 }

@@ -1,3 +1,4 @@
+
 select{
     margin-left: 30px;
     width: 100px;
@@ -10,13 +11,277 @@ select{
    
 }
 
-.delete{
+.contenedortotal{
     display: flex;
-    flex-direction: row;
-    border: 10px solid black;
-    font-size: 10px;
+    text-align: center;
+    margin-top: 110px;
+    margin-left: 350px;
+}
+
+.contenedorNombre{
+    display: inline-block;
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 230px;
+    
+}
+.LabelNombre{
+  text-align: center;
+  margin-left: 20px;
+  border-radius: 15px;
+  background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");
+    
+}
+.contenedorInputNombre{
+    width: 170px;
+    height: 25px;
+    margin-left: -45px;
+    border-radius: 10px;
+    background-color: rgb(255, 131, 29);
+
+}
+
+.contenedorAlturas{
+    display: flex;
+    margin-left: 24px;
+   
+}
+.contenedorAlturaMinima{
+    display: inline-block;
+    width: 240px;
+    
+}
+
+.labelAlturaMin{
+    display: flex;
+    text-align: center;
+    width: 125px;
+    height: 25px;
+    margin-left: 75px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");
+   
+}
+.contenedorInputAltMin{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 35px;
+    background-color: rgb(255, 131, 29);
+
+
+}
+.labelAlturaMax{
+    display: flex;
+    text-align: center;
+    width: 120px;
+    height: 25px;
+    margin-left: 80px;
+    margin-top: 20px;  
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg"); 
+}
+.inputAltMax{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 55px;
+    background-color: rgb(255, 131, 29);
+
+}
+.contenedorPesos{
+    display: flex;
+    margin-left: 24px;
+}
+
+.contenedorPesoMin{
+    display: inline-block;
+    width: 210px;
+}
+.labelPesoMin{
+    display: flex;
+    text-align: center;
+    width: 125px;
+    height: 25px;
+    margin-left: 50px;
+    margin-top: 20px; 
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");  
+}
+.inputPesoMin{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 15px;
+    background-color: rgb(255, 131, 29);
+}
+.labelPesoMax{
+    display: flex;
+    text-align: center;
+    width: 125px;
+    height: 25px;
+    margin-left: 90px;
+    margin-top: 20px; 
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");  
+ 
+}
+.inputPesoMax{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 62px;
+    background-color: rgb(255, 131, 29);
+}
+.labelAñosDeVida{
+    display: flex;
+    text-align: center;
+    width: 125px;
+    margin-left: 210px;
+    margin-top: 20px;  
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");  
+ 
+}
+.inputAñosDeVida{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: rgb(255, 131, 29);
+
+}
+.labelImagen{
+    display: flex;
+    text-align: center;
+    width: 80px;
+    margin-left: 240px;
+    margin-top: 20px;  
+    border-radius: 15px;
+    background-image: url("https://st2.depositphotos.com/1106005/10604/i/950/depositphotos_106049426-stock-photo-yellow-doggy-paw-print-tile.jpg");  
+ 
+}
+.inputImagen{
+    width: 170px;
+    height: 25px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 131, 29);
+
+}
+.selectTemp{
+    
+     border: none;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     margin-left: 10px;
+     width: 150px;
+     background-color: rgb(255, 140, 16);
+
+}
+.botonCrearDog{
+   
+display: flex;
+margin-left: 260px;
+margin-top: 105px;
+padding-left: 0px;
+padding-top: 0px;
+cursor: pointer;
+border-radius: 460px;
+border: none;
+height:50px;
+width:50px;
+background-color: rgb(255, 234, 0);
+        cursor: pointer;
+
+
+}
+.botonCrearDog:hover{
+    background-color: rgb(102, 255, 0);
+}
+
+.botonHome{
+    
+    display:block;
+        width:50px;
+        height:50px;
+        margin-left: 640px;
+        margin-top: 0px;
+       padding: 0;
+        border-radius: 520px;
+        border: none;
+        background-color: rgb(0, 0, 0);
+        cursor: pointer;
+}
+
+.botonHome:hover{
+    background-color: rgb(26, 214, 26);
+    }
+
+.titulo{
+    margin-top: -130px;
+    margin-left: 250px;    
+}
+
+.imagenGuardar{
     width: 50px;
     height: 50px;
-    border: 1px solid rgb(0, 0, 0);
+}
+.imagenHome{
+    display:block;
+    width: 50px;
+    height: 50px;
+    
+}
+.botonX{
+    width: 25   px;
+    height: 25px;
+    border-radius: 310px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+}
+.botonX:hover{
+    background-color: rgb(4, 4, 4);
+}
+.imagenEliminar{
+    width: 25px;
+    height: 25px;
+
+}
+
+.contHome{
+    padding: 5px 20px 20px ;
+    width: 1px;
+    background-color: rgb(241, 222, 11);
+}
+.errors{
+    font-size: 15px;
+    color: red;
+}
+
+
+
+
+.contenidofor{
+    width : 550px;
+    height: auto;
+    padding: 0;
+    margin-top: -80px;
+    margin-left: -340px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-image: url("https://w0.peakpx.com/wallpaper/325/669/HD-wallpaper-dogs-dog-fall-pet.jpg");
+    background-size: cover;
+  background-position: center;
+  
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
    
+    
+    
 }

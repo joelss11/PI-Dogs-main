@@ -5,7 +5,7 @@ export default function Card({nombre, peso, imagen,temperament}){
   
     return(
         <div className={styles.contenedorCartica}>
-            <h3>
+            <h3 className={styles.textoh3} >
             {nombre}
             </h3>
               <img className={styles.imagenCard} src={imagen} alt="no encontra" width="230px" height="210px"/>   
@@ -14,7 +14,7 @@ export default function Card({nombre, peso, imagen,temperament}){
           </h4>
           
         <h5>
-            Peso: 
+            
             {peso} kg
         </h5> 
 

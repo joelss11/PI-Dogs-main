@@ -1,4 +1,13 @@
+body{
+    
+
+    background:url("https://fondosmil.com/fondo/20100.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   
+}
     .tituloPrincipal{
         display: flex;
         justify-content: center;
@@ -21,7 +30,7 @@
        
     }
    .botonimagen:hover{
-    background-color: rgb(7, 161, 7); /* Green */
+    background-color: rgb(7, 161, 7); 
     color: white;
     
    }
@@ -57,7 +66,7 @@
     .BotonRefresh{
         display: flex;
         justify-content: center;
-        margin-top: -90px;
+        margin-top: -140px;
     }
 
     .paginator{
@@ -102,12 +111,14 @@
     
     .cartarende{
         display: grid;
+       
         grid-template-columns: repeat(auto-fill, 210px);
         list-style: none;
-        float: right;
+        float: left;
         margin: auto;
         gap: 40px;
         padding: 60px;
+        margin-left: 120px;
         justify-content: center;
         text-align: center;
     }

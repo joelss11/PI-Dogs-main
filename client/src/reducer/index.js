@@ -3,7 +3,8 @@ const initialState = {
     dogs: [],   
     allDogs:[],
     temperaments:[],
-    details:[]
+    details:[],
+    dogsByTemperament:[]
 }
 
 
@@ -53,25 +54,19 @@ function rootReducer(state = initialState, action){
                 }
 
            case "GET_FILTER_TEMPERAMENTS":
-      const allDogs = state.allDogs;
-      let filteredDogs = [];
-      if (action.payload === "Todos") {
-        filteredDogs = allDogs;
-      } else {
-        for (let i = 0; i < allDogs.length; i++) {
-          let found = allDogs[i].temperaments.find((t) => t === action.payload);
-          if (found) {
-            filteredDogs.push(allDogs[i]);
-          } //todos los perros en la posicion de ese momento
-        }
-      }
-      return {
-        //return funciona correcto
-        ...state,
-        dogs: filteredDogs,
-      };
-                
-
+            const tempfilter = state.allDogs.filter((e) => {
+              if(typeof(e.temperament) === "string"){
+                return e.temperament.includes(action.payload)
+              }
+              if(Array.isArray(e.Temperamentos)){
+                let temp = e.Temperamentos.map(e => e.nombre)
+                return temp.includes(action.payload)
+              }
+            }) 
+            return {
+              ...state,
+              dogs: tempfilter
+            }
             case 'FILTER_BY_PESO':
               const sortedWeight =
         action.payload === "pesomin"

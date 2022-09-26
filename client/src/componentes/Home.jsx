@@ -15,7 +15,7 @@ export default function Home (){
 
     const[orden, setOrden]=useState('')
     const [currentPage, setCurrentPage] = useState(1)//estado local -- pagina donde estoy y cual va hacer la pagna actual 
-    const [dogsPerPage,setdogsPerPage] = useState(8)//cantida de cararter por paginana
+    const [dogsPerPage,setdogsPerPage] = useState(9)//cantida de cararter por paginana
     const indexOfLastDog = currentPage * dogsPerPage
     const indexOfFirstDog = indexOfLastDog - dogsPerPage
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
@@ -105,7 +105,7 @@ export default function Home (){
 
                 <select className="selector" onChange={handleFilterTemperamento}>
                  <option hidden>Temperaments</option>                 
-                 <option value="Todos">All</option>
+                
                 {allTemperamentos?.map(temp => (
                         <option value={temp.nombre}  key={temp.id}>{temp}</option>
                     ))}
@@ -125,8 +125,8 @@ export default function Home (){
                     return(
                     <li className="cartarende" >
                    <div className="">
-                   <Link to={"/details/" + c.id}>
-                    <Card  key={c.id} nombre={c.nombre} temperament={c.temperament||c.Temperamentos?.map(e=>e.nombre +",")} peso={`${c.pesoMin} - ${c.pesoMax}`} imagen={c.imagen['url']||c.imagen} />
+                   <Link style={{ textDecoration: 'none', color: 'black' }} to={"/details/" + c.id}>
+                    <Card  key={c.id} nombre={c.nombre} temperament={c.temperament||c.Temperamentos?.map(e=>e.nombre +", ")} peso={`${c.pesoMin} - ${c.pesoMax}`} imagen={c.imagen['url']||c.imagen} />
                     </Link>
                     
                     </div>  
