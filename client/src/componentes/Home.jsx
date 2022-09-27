@@ -70,7 +70,9 @@ export default function Home (){
     return(
         <div className="container">
             <h1 className="tituloPrincipal">𝓓𝓸𝓰𝓼𝓟𝓻𝓸</h1>
+            <Link to="/">
             <img className="imagenLogo"src="https://media.istockphoto.com/vectors/cute-dog-vector-logo-illustration-vector-id1006358538?k=20&m=1006358538&s=170667a&w=0&h=ycbWpHpr6nx3x7euQP-eP9jL2RYD17TpLOM6UpdZIjI=" alt="" />
+            </Link>
             <div>
              <Link to="/dogs">
             <button className="botonimagen"><img className="imagenAdd"src="https://cdn-icons-png.flaticon.com/512/6569/6569784.png" alt="" /></button>
