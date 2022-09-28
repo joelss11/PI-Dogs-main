@@ -63,7 +63,7 @@ export default function Details(props){
                   <div className={styles.conteTempera}>
                 <p className={styles.tempe}>Temperamentos </p>
                 <div className={styles.temperamentico}>
-                {myDog.temperament||myDog.Temperamentos?.map(e=>e.nombre +" ")}
+                {myDog.temperament||myDog.Temperamentos?.map(e=>", "+e.nombre )}
                 </div>
               </div>
 

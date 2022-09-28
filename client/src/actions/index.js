@@ -20,7 +20,7 @@ export function getNameDogs(payload){
                 payload:json.data
             })
         } catch (error) {
-            console.log(error)
+            alert('Dog no encontrado!')
         }
     }
 }
