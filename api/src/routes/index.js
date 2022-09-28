@@ -3,6 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const axios=require('axios');
 const {Raza, Temperamento} = require("../db")
+const{APY_KEY}=process.env;
 
 
 const router = Router();
@@ -11,7 +12,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async ()=>{
-    const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds?api_key=%20live_4aUjTu6Kn7Z6fe9AVuAlvEjUgBOsKmBkv0wACo2EUDISsSJLRDI2NIaOUT7VmxHq")
+    const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APY_KEY}`)
     const apiInfo = await apiUrl.data.map(resp=>{
         return{
             id:resp.id,
@@ -47,7 +48,7 @@ const getAllRazas = async()=>{
     return InfoTotal;
 }
 const getTemperament = async () => {
-    let api = await axios.get("https://api.thedogapi.com/v1/breeds?api_key=%20live_4aUjTu6Kn7Z6fe9AVuAlvEjUgBOsKmBkv0wACo2EUDISsSJLRDI2NIaOUT7VmxHq");
+    let api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APY_KEY}`);
     let allTemperament = await api.data
       .map((temp) => {
         return temp.temperament;
